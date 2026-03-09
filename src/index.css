@@ -1,14 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
 @import "tailwindcss";
+@import "primereact/resources/themes/lara-light-indigo/theme.css";
+@import "primereact/resources/primereact.min.css";
+@import "primeicons/primeicons.css";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
   --color-gold: #D4AF37;
+  --color-burgundy: #600000;
+  --color-burgundy-light: #800000;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #000;
+  background-color: #0a0a0a;
+  color: #333;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
 }
 
 /* Custom Scrollbar */

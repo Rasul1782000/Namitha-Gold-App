@@ -51,8 +51,29 @@ db.exec(`
   );
 `);
 
+// Seed Dummy Users
+async function seedDatabase() {
+  const userCount: any = db.prepare("SELECT COUNT(*) as count FROM users").get();
+  if (userCount.count === 0) {
+    console.log("Seeding dummy users...");
+    const hashedPassword = await bcrypt.hash("password123", 10);
+    const adminPassword = await bcrypt.hash("adminpassword", 10);
+
+    db.prepare("INSERT INTO users (name, email, phone, password, gold_balance, kyc_status) VALUES (?, ?, ?, ?, ?, ?)").run(
+      "Test User", "test@example.com", "9876543210", hashedPassword, 2.5, "verified"
+    );
+
+    db.prepare("INSERT INTO users (name, email, phone, password, gold_balance, kyc_status) VALUES (?, ?, ?, ?, ?, ?)").run(
+      "Namitha Admin", "admin@namitha.com", "9999999999", adminPassword, 0, "verified"
+    );
+    console.log("Database seeded successfully.");
+  }
+}
+
+export const app = express();
+
 async function startServer() {
-  const app = express();
+  await seedDatabase();
   app.use(express.json());
 
   // Auth Middleware
@@ -176,9 +197,11 @@ async function startServer() {
   }
 
   const PORT = 3000;
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+  if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
+  }
 }
 
 startServer();
