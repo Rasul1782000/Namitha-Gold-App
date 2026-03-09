@@ -1,0 +1,7 @@
+{
+  "name": "Namitha Jewellers DigiGold",
+  "description": "A premium DigiGold investment platform for Namitha Jewellers, Chennai. Buy, sell, and redeem digital gold securely.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
