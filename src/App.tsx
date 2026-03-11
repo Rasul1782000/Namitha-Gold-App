@@ -8,6 +8,7 @@ import { Sparkles } from 'lucide-react';
 
 // Types
 import { Screen, UserData, Transaction, SIP } from './types';
+import { MOCK_TRANSACTIONS, MOCK_SIPS } from './constants';
 
 // Components
 import { Button } from './components/common/Button';
@@ -22,7 +23,11 @@ import { RedeemGoldScreen } from './components/screens/RedeemGoldScreen';
 import { HistoryScreen } from './components/screens/HistoryScreen';
 import { RewardsScreen } from './components/screens/RewardsScreen';
 import { StoreLocatorScreen } from './components/screens/StoreLocatorScreen';
+import { SchemesScreen } from './components/screens/SchemesScreen';
 import { ProfileScreen } from './components/screens/ProfileScreen';
+import { ReferScreen } from './components/screens/ReferScreen';
+import { TransactionScreen } from './components/screens/TransactionScreen';
+import { WithdrawScreen } from './components/screens/WithdrawScreen';
 import { Navbar } from './components/common/Navbar';
 
 export default function App() {
@@ -46,10 +51,8 @@ export default function App() {
   const [sellAmount, setSellAmount] = useState('');
   const [sipAmount, setSipAmount] = useState('');
   const [sipFrequency, setSipFrequency] = useState<'daily' | 'weekly' | 'monthly'>('monthly');
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [activeSips, setActiveSips] = useState<SIP[]>([
-    { id: 1, amount: 2500, frequency: 'monthly', next_date: '2024-04-01', status: 'active' }
-  ]);
+  const [transactions, setTransactions] = useState<Transaction[]>(MOCK_TRANSACTIONS);
+  const [activeSips, setActiveSips] = useState<SIP[]>(MOCK_SIPS);
 
   const fetchProfile = useCallback(async () => {
     if (!token) return;
@@ -324,6 +327,26 @@ export default function App() {
                   setScreen={setScreen}
                 />
               )}
+              {screen === 'schemes' && (
+                <SchemesScreen 
+                  setScreen={setScreen}
+                />
+              )}
+              {screen === 'refer' && (
+                <ReferScreen 
+                  setScreen={setScreen}
+                />
+              )}
+              {screen === 'transaction' && (
+                <TransactionScreen 
+                  setScreen={setScreen}
+                />
+              )}
+              {screen === 'withdraw' && (
+                <WithdrawScreen 
+                  setScreen={setScreen}
+                />
+              )}
               {screen === 'profile' && (
                 <ProfileScreen 
                   setScreen={setScreen}
@@ -344,7 +367,7 @@ export default function App() {
             </motion.div>
           </AnimatePresence>
 
-          {['dashboard', 'history', 'rewards', 'locator', 'profile'].includes(screen) && (
+          {['dashboard', 'schemes', 'rewards', 'locator', 'profile'].includes(screen) && (
             <Navbar currentScreen={screen} setScreen={setScreen} />
           )}
         </div>

@@ -1,25 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;700&display=swap');
 @import "tailwindcss";
 @import "primereact/resources/themes/lara-light-indigo/theme.css";
 @import "primereact/resources/primereact.min.css";
 @import "primeicons/primeicons.css";
 
 @theme {
-  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-bg: #5e2a7a;
+  --color-surface: #6a3587;
   --color-gold: #D4AF37;
-  --color-burgundy: #600000;
-  --color-burgundy-light: #800000;
+  --color-text: #FFFFFF;
+  --color-text-muted: #E5E7EB;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #0a0a0a;
-  color: #333;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
-.font-serif {
-  font-family: var(--font-serif);
+h1, h2, h3, h4 { font-family: var(--font-display); }
+.font-display { font-family: var(--font-display); }
+
+.smooth-card {
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Custom Scrollbar */
@@ -38,4 +45,12 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(212, 175, 55, 0.4);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

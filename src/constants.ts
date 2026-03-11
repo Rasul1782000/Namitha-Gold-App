@@ -1,5 +1,6 @@
 import React from 'react';
 import { Coins, ShieldCheck, Sparkles } from 'lucide-react';
+import { Transaction, SIP } from './types';
 
 export const GOLD_HISTORY = [
   { date: '01 Mar', price: 6100 },
@@ -45,4 +46,21 @@ export const FEATURED_COLLECTION = [
     title: "Temple Jewelry", 
     img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=400" 
   }
+];
+
+export const MOCK_TRANSACTIONS: Transaction[] = [
+  { id: 1, type: 'buy', gold_amount: 0.5, price: 3100, status: 'completed', created_at: '2024-03-10' },
+  { id: 2, type: 'sip', gold_amount: 0.1, price: 620, status: 'completed', created_at: '2024-03-01' },
+  { id: 3, type: 'reward', gold_amount: 0.05, price: 0, status: 'completed', created_at: '2024-02-28' },
+];
+
+export const MOCK_SIPS: SIP[] = [
+  { id: 1, amount: 2500, frequency: 'monthly', next_date: '2024-04-01', status: 'active' },
+  { id: 2, amount: 500, frequency: 'weekly', next_date: '2024-03-15', status: 'paused' },
+];
+
+export const MOCK_REWARDS = [
+  { type: 'Referral Bonus', amount: '0.1000 g', date: '10 Mar 2024' },
+  { type: 'Festival Offer', amount: '0.0500 g', date: '08 Mar 2024' },
+  { type: 'Signup Bonus', amount: '0.1000 g', date: '01 Mar 2024' },
 ];

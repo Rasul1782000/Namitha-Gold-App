@@ -1,4 +1,4 @@
-export type Screen = 'splash' | 'onboarding' | 'auth' | 'dashboard' | 'buy' | 'sell' | 'sip' | 'redeem' | 'history' | 'rewards' | 'locator' | 'profile' | 'kyc';
+export type Screen = 'splash' | 'onboarding' | 'auth' | 'dashboard' | 'buy' | 'sell' | 'sip' | 'redeem' | 'history' | 'rewards' | 'locator' | 'profile' | 'schemes' | 'kyc' | 'refer' | 'transaction' | 'withdraw';
 
 export interface UserData {
   id: number;
